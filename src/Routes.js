@@ -7,17 +7,10 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import Client from "~/Screens/Auth/Client";
 import Company from "~/Screens/Auth/Company";
 
-export default () =>
-  createAppContainer(
-    createSwitchNavigator(
-      {
-        Auth: createSwitchNavigator({
-          Client,
-          Company,
-        }),
-      },
-      {
-        initialRouteName: "Auth",
-      }
-    )
-  );
+const AppNavigator = createSwitchNavigator({
+  Client,
+});
+
+const AppContainer = createAppContainer(AppNavigator);
+
+export default AppContainer;
