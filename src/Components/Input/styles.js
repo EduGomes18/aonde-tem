@@ -1,10 +1,10 @@
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  padding: 0 15px;
-  height: 50px;
+  padding: 0 12px;
+  height: 46px;
+  margin: 22px 0;
   flex-direction: row;
-  margin-top: -10px;
   background: #ffffff;
   border-radius: 41px;
   align-items: center;
@@ -19,10 +19,8 @@ export const TInput = styled.TextInput.attrs({
   color: #7b7b7b;
 `;
 
-export const BoxShadow = styled.View`
-  width: 100%;
-  padding: 0 4%;
-  margin-top: 22px;
-  height: 56px;
-  overflow: hidden;
+export const Icon = styled.Image`
+  z-index: 10;
+  position: absolute;
+  left: 1px;
 `;
