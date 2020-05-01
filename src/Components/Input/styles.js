@@ -4,7 +4,7 @@ export const Container = styled.View`
   padding: 0 15px;
   height: 50px;
   flex-direction: row;
-  margin-top: 25px;
+  margin-top: -10px;
   background: #ffffff;
   border-radius: 41px;
   align-items: center;
@@ -22,6 +22,7 @@ export const TInput = styled.TextInput.attrs({
 export const BoxShadow = styled.View`
   width: 100%;
   padding: 0 4%;
+  margin-top: 22px;
   height: 56px;
   overflow: hidden;
 `;
