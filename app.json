@@ -4,6 +4,22 @@
     "slug": "aonde-tem",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
+    "packagerOpts": {
+      "config": "metro.config.js",
+      "sourceExts": [
+        "expo.ts",
+        "expo.tsx",
+        "expo.js",
+        "expo.jsx",
+        "ts",
+        "tsx",
+        "js",
+        "jsx",
+        "json",
+        "wasm",
+        "svg"
+      ]
+    },
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
