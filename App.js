@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 
 const fetchFonts = () => {
   return Font.loadAsync({
-    "Roboto Regular": require("./assets/font/Roboto-Regular.ttf"),
+    "Roboto-Regular": require("./assets/font/Roboto/Roboto-Regular.ttf"),
   });
 };
 

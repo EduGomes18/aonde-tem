@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import createRouter from "./Routes";
+//import createRouter from "./Routes";
+import Routes from "./Routes";
 
 export default function Base() {
   //autenticacao desativada por enquanto
