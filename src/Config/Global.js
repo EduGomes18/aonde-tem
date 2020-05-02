@@ -1,5 +1,7 @@
 export const Principal = "#F15F7E";
 
-export const Gray = "#7B7B7B";
+export const Gray = "#828282";
 
 export const Black = "#000";
+
+export const White = "#FFF";

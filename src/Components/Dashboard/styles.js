@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 import { Dimensions } from "react-native";
 import Constants from "expo-constants";
-import { Principal, Gray, Black } from "~/Config/Global";
+import { Principal, Gray, Black, White } from "~/Config/Global";
 
 export const Container = styled.View`
   flex: 1;
@@ -10,15 +10,38 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-export const Header = styled.ImageBackground`
+export const Header = styled.View`
   width: 100%;
-  height: 150px;
+  height: 160px;
   flex-direction: row;
-  background: #fff;
+  background: ${White};
+`;
+
+export const HeaderShade = styled.View`
+  bottom: 0;
+  width: 100%;
+  height: 34%;
+  border-top-right-radius: 26px;
+  border-top-left-radius: 26px;
+  position: absolute;
+  background: ${White};
+`;
+
+export const HeaderBg = styled.ImageBackground`
+  position: absolute;
+  width: 100%;
+  height: 100%;
 `;
 
 export const Area = styled.View`
   width: 100%;
+  border-top-right-radius: 26px;
+  border-top-left-radius: 26px;
+  background: #fff;
+  position: ${(props) => (props.content ? "relative" : "absolute")};
+  bottom: 0;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
 export const HeaderInner = styled.View`
@@ -30,16 +53,15 @@ export const HeaderInner = styled.View`
 `;
 
 export const AvatarArea = styled.View`
-  width: 38%;
-  margin-right: 2%;
+  width: 40%;
   justify-content: center;
   align-items: center;
   height: 100%;
 `;
 
 export const AvtCircle = styled.View`
-  width: 70%;
-  height: 70%;
+  width: 80%;
+  height: 80%;
   border-radius: ${Math.round(
     Dimensions.get("window").width + Dimensions.get("window").height
   ) /
@@ -83,6 +105,54 @@ export const Name = styled.Text`
 `;
 
 export const Chat = styled.TouchableOpacity`
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 6%;
+`;
+
+export const Region = styled.TouchableOpacity`
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  margin: 22px 0;
+  height: 100%;
+  padding-bottom: 6px;
+  border-bottom-color: #f2f2f2;
+  border-bottom-width: 1.6px;
+  border-style: solid;
+`;
+export const RegClosed = styled.TouchableOpacity`
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  margin: 22px 0;
+  padding: 12px;
+`;
+
+export const RegTitle = styled.Text`
+  color: ${Gray};
+  font-size: 14px;
+  margin-top: 8px;
+`;
+
+export const Content = styled.View`
+  flex: 1;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const PromoCard = styled.View`
+  width: 60%;
+  height: 44px;
+  border-radius: 22px;
+  background: #000;
+`;
+
+export const FlatContainer = styled.View`
+  width: 100%;
+  height: 100%;
+  background: #000;
   justify-content: center;
   align-items: center;
 `;

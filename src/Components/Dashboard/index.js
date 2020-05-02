@@ -1,7 +1,9 @@
-import React from "react";
-import { Text, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { Text, StyleSheet, FlatList } from "react-native";
 import avatar from "~/Assets/Images/avatar.jpg";
 import ChatIcon from "~/Assets/Images/chat.svg";
+import Seta from "~/Assets/Images/seta.svg";
+import Stroke from "~/Assets/Images/stroke.svg";
 import bikebg from "~/Assets/Images/bike.jpg";
 import {
   Container,
@@ -16,6 +18,14 @@ import {
   AvtCircle,
   Avatar,
   Chat,
+  HeaderBg,
+  HeaderShade,
+  Region,
+  RegTitle,
+  Content,
+  RegClosed,
+  PromoCard,
+  FlatContainer,
 } from "./styles";
 
 function elevationShadowStyle(elevation) {
@@ -28,10 +38,24 @@ function elevationShadowStyle(elevation) {
   };
 }
 
-export default function Dashboard() {
+export default function Dashboard({ children }) {
+  const [content, showContent] = useState(false);
+
+  const data = [
+    { id: "00", name: "Relâmpago McQueen" },
+    { id: "01", name: "Agente Tom Mate" },
+    { id: "02", name: "Doc Hudson" },
+    { id: "03", name: "Cruz Ramirez" },
+  ];
+
+  function handleDrawer() {
+    showContent(!content);
+  }
   return (
     <Container>
-      <Header source={bikebg}>
+      <Header>
+        <HeaderBg source={bikebg} />
+        <HeaderShade />
         <AvatarArea>
           <AvtCircle style={styles.shadow}>
             <Avatar source={avatar}></Avatar>
@@ -48,7 +72,33 @@ export default function Dashboard() {
           <ChatIcon />
         </Chat>
       </Header>
-      <Area></Area>
+      <Content>
+        <Area area={content} style={styles.shadowArea}>
+          {content ? (
+            <FlatContainer>
+              <Region onPress={handleDrawer}>
+                <Seta />
+                <RegTitle>Ofertas na sua região</RegTitle>
+              </Region>
+              <FlatList
+                data={data}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => {
+                  return (
+                    <PromoCard>
+                      <Text>{item.name}</Text>
+                    </PromoCard>
+                  );
+                }}
+              />
+            </FlatContainer>
+          ) : (
+            <RegClosed onPress={handleDrawer}>
+              <Stroke />
+            </RegClosed>
+          )}
+        </Area>
+      </Content>
     </Container>
   );
 }
@@ -57,5 +107,9 @@ const styles = StyleSheet.create({
   shadow: {
     ...elevationShadowStyle(3),
     backgroundColor: "#fff",
+  },
+  shadowArea: {
+    shadowColor: "rgba(0,0,0,0.25)",
+    elevation: 10,
   },
 });
