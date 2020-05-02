@@ -3,8 +3,7 @@ import { Gray } from "~/Config/Global";
 import { Text, StyleSheet, FlatList } from "react-native";
 import avatar from "~/Assets/Images/avatar.jpg";
 import ChatIcon from "~/Assets/Images/chat.svg";
-import Seta from "~/Assets/Images/seta.svg";
-import Stroke from "~/Assets/Images/stroke.svg";
+
 import bikebg from "~/Assets/Images/bike.jpg";
 
 import elevationShadowStyle from "~/Components/ShadowFunc";
@@ -33,18 +32,6 @@ import {
 } from "./styles";
 
 export default function Dashboard({ children }) {
-  const [content, showContent] = useState(false);
-
-  const data = [
-    { id: "00", name: "Relâmpago McQueen" },
-    { id: "01", name: "Agente Tom Mate" },
-    { id: "02", name: "Doc Hudson" },
-    { id: "03", name: "Cruz Ramirez" },
-  ];
-
-  function handleDrawer() {
-    showContent(!content);
-  }
   return (
     <Container>
       <Header>
@@ -66,43 +53,7 @@ export default function Dashboard({ children }) {
           <ChatIcon />
         </Chat>
       </Header>
-      <Content>
-        {children}
-        <Area area={content} style={styles.shadowArea}>
-          {content ? (
-            <FlatContainer>
-              <Region onPress={handleDrawer}>
-                <Seta />
-                <RegTitle>Ofertas na sua região</RegTitle>
-              </Region>
-              <FlatList
-                style={{
-                  width: "100%",
-                }}
-                contentContainerStyle={{
-                  width: "100%",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginBottom: 12,
-                }}
-                data={data}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => {
-                  return (
-                    <PromoCard>
-                      <Text>{item.name}</Text>
-                    </PromoCard>
-                  );
-                }}
-              />
-            </FlatContainer>
-          ) : (
-            <RegClosed onPress={handleDrawer}>
-              <Stroke />
-            </RegClosed>
-          )}
-        </Area>
-      </Content>
+      <Content>{children}</Content>
     </Container>
   );
 }
