@@ -1,9 +1,9 @@
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  padding: 0 12px;
+  padding: 0 38px;
   height: 46px;
-  margin: 22px 0;
+  margin: 16px 0;
   flex-direction: row;
   background: #ffffff;
   border-radius: 41px;
@@ -19,7 +19,7 @@ export const TInput = styled.TextInput.attrs({
   color: #7b7b7b;
 `;
 
-export const Icon = styled.Image`
+export const Icon = styled.View`
   z-index: 10;
   position: absolute;
   left: 1px;

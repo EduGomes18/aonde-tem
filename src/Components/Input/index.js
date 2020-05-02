@@ -2,8 +2,8 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 import { Container, TInput, Icon } from "./styles";
-import person from "~/Assets/Images/person.png";
-import pass from "~/Assets/Images/pass.png";
+import Person from "~/Assets/Images/person.svg";
+import Pass from "~/Assets/Images/pass.svg";
 
 function elevationShadowStyle(elevation) {
   return {
@@ -15,11 +15,12 @@ function elevationShadowStyle(elevation) {
   };
 }
 
-export default function Input({ icon }) {
+export default function Input({ icon, safe }) {
   return (
     <Container style={styles.shadow}>
-      <Icon source={icon === "person" ? person : pass} />
-      <TInput />
+      <Icon>{icon === "person" ? <Person /> : <Pass />}</Icon>
+
+      <TInput secureTextEntry={safe} />
     </Container>
   );
 }
@@ -33,4 +34,5 @@ const styles = StyleSheet.create({
 
 Input.propTypes = {
   icon: PropTypes.string,
+  safe: PropTypes.bool,
 };

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
+import { Principal } from "./src/Config/Global";
 
 import Constants from "expo-constants";
 import * as Font from "expo-font";
@@ -10,7 +11,7 @@ import Base from "./src/Base";
 
 const styles = StyleSheet.create({
   statusBar: {
-    backgroundColor: "#F15F7E",
+    backgroundColor: Principal,
     height: Constants.statusBarHeight,
   },
 });
