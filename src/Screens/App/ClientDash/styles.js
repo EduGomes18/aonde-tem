@@ -1,4 +1,6 @@
 import styled from "styled-components/native";
+import { Gray } from "~/Config/Global";
+import { Dimensions } from "react-native";
 
 export const DescribeArea = styled.View`
   width: 100%;

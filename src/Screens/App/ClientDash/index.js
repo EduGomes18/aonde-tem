@@ -7,6 +7,8 @@ import {
   SearchButton,
   SearchText,
 } from "./styles";
+import { useNavigation } from "react-navigation-hooks";
+import { Gray } from "~/Config/Global";
 import { Text, StyleSheet, FlatList } from "react-native";
 import Input from "~/Components/Input";
 import Search from "~/Assets/Images/search.svg";
@@ -17,10 +19,23 @@ import Dashboard from "~/Components/Dashboard";
 import elevationShadowStyle from "~/Components/ShadowFunc";
 
 export default function ClientDash() {
+  const { navigate } = useNavigation();
+  const data = [
+    { id: "00", name: "Relâmpago McQueen" },
+    { id: "01", name: "Agente Tom Mate" },
+    { id: "02", name: "Doc Hudson" },
+    { id: "03", name: "Cruz Ramirez" },
+  ];
+
   return (
     <>
       <Dashboard>
-        <SearchButton style={styles.shadow}>
+        <SearchButton
+          onPress={() => {
+            navigate("ClientSearch");
+          }}
+          style={styles.shadow}
+        >
           <Search />
           <SearchText>Buscar</SearchText>
         </SearchButton>
