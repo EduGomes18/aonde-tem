@@ -11,12 +11,13 @@ export const Container = styled.View`
 `;
 
 export const TInput = styled.TextInput.attrs({
-  placeholderTextColor: "#7B7B7B",
+  placeholderTextColor: "#727272",
 })`
   flex: 1;
   font-size: 14px;
   margin-left: 10px;
   color: #7b7b7b;
+  text-align: ${(props) => (props.placeholder ? "center" : "left")};
 `;
 
 export const Icon = styled.View`

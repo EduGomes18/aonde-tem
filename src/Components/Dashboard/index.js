@@ -5,6 +5,7 @@ import ChatIcon from "~/Assets/Images/chat.svg";
 import Seta from "~/Assets/Images/seta.svg";
 import Stroke from "~/Assets/Images/stroke.svg";
 import bikebg from "~/Assets/Images/bike.jpg";
+import Input from "~/Components/Input";
 import {
   Container,
   Area,
@@ -73,6 +74,7 @@ export default function Dashboard({ children }) {
         </Chat>
       </Header>
       <Content>
+        <Input icon="search" placeholder="Buscar" />
         <Area area={content} style={styles.shadowArea}>
           {content ? (
             <FlatContainer>
@@ -81,6 +83,15 @@ export default function Dashboard({ children }) {
                 <RegTitle>Ofertas na sua região</RegTitle>
               </Region>
               <FlatList
+                style={{
+                  width: "100%",
+                }}
+                contentContainerStyle={{
+                  width: "100%",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginBottom: 12,
+                }}
                 data={data}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => {
@@ -109,7 +120,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   shadowArea: {
-    shadowColor: "rgba(0,0,0,0.25)",
-    elevation: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 11,
+    },
+    shadowOpacity: 0.55,
+    shadowRadius: 14.78,
+
+    elevation: 22,
   },
 });

@@ -115,7 +115,6 @@ export const Region = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   margin: 22px 0;
-  height: 100%;
   padding-bottom: 6px;
   border-bottom-color: #f2f2f2;
   border-bottom-width: 1.6px;
@@ -143,16 +142,18 @@ export const Content = styled.View`
 `;
 
 export const PromoCard = styled.View`
-  width: 60%;
-  height: 44px;
+  width: ${Dimensions.get("window").width / 2 + "px"};
+  height: 80px;
+  margin: 6px 0;
   border-radius: 22px;
-  background: #000;
+  background: ${Gray};
+  justify-content: center;
+  align-items: center;
 `;
 
 export const FlatContainer = styled.View`
   width: 100%;
   height: 100%;
-  background: #000;
   justify-content: center;
   align-items: center;
 `;

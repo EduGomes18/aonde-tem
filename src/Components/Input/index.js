@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 import { Container, TInput, Icon } from "./styles";
 import Person from "~/Assets/Images/person.svg";
 import Pass from "~/Assets/Images/pass.svg";
+import Search from "~/Assets/Images/search.svg";
 
 function elevationShadowStyle(elevation) {
   return {
@@ -15,12 +16,24 @@ function elevationShadowStyle(elevation) {
   };
 }
 
-export default function Input({ icon, safe }) {
+export default function Input({ icon, safe, placeholder }) {
+  const Ic = function () {
+    if (icon === "pass") {
+      return <Pass />;
+    }
+    if (icon === "person") {
+      return <Person />;
+    }
+    if (icon === "search") {
+      return <Search style={{ marginLeft: 10 }} />;
+    }
+  };
+  const result = <Ic />;
   return (
     <Container style={styles.shadow}>
-      <Icon>{icon === "person" ? <Person /> : <Pass />}</Icon>
+      <Icon>{result}</Icon>
 
-      <TInput secureTextEntry={safe} />
+      <TInput placeholder={placeholder} secureTextEntry={safe} />
     </Container>
   );
 }
