@@ -7,12 +7,10 @@ import {
   Dimensions,
 } from "react-native";
 
-import posed from "react-native-pose";
-
 const S = StyleSheet.create({
   container: {
     flexDirection: "row",
-    height: 62,
+    height: 52,
     elevation: 4,
     backgroundColor: "#FFDFEE",
   },
@@ -25,9 +23,17 @@ const S = StyleSheet.create({
   },
 });
 
-const Scaler = posed.View({
-  active: { scale: 1.1 },
-  inactive: { scale: 1 },
+const Stl = StyleSheet.create({
+  active: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  inactive: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: "90%",
+  },
 });
 
 const BottomBar = (props) => {
@@ -62,12 +68,9 @@ const BottomBar = (props) => {
               }}
               accessibilityLabel={getAccessibilityLabel({ route })}
             >
-              <Scaler
-                style={S.scaler}
-                pose={isRouteActive ? "active" : "inactive"}
-              >
+              <View style={isRouteActive ? Stl.active : Stl.inactive}>
                 {renderIcon({ route, focused: isRouteActive, tintColor })}
-              </Scaler>
+              </View>
             </TouchableOpacity>
           );
         })}

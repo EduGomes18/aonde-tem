@@ -40,7 +40,7 @@ export default function Input({ icon, safe, placeholder }) {
 
 const styles = StyleSheet.create({
   shadow: {
-    ...elevationShadowStyle(3),
+    ...elevationShadowStyle(10),
     backgroundColor: "#fff",
   },
 });

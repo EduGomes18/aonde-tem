@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import Dashboard from "~/Components/Dashboard";
-// import { Slider } from "react-native-elements";
+import Input from "~/Components/Input";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { Text, StyleSheet, View, Slider } from "react-native";
+import {
+  SearchBar,
+  FilterIcon,
+  InputArea,
+  FiText,
+  Local,
+  LocalText,
+} from "./styles";
 
 export default function ClientSearch() {
   const [value, setValue] = useState(0);
@@ -13,6 +22,23 @@ export default function ClientSearch() {
   return (
     <>
       <Dashboard>
+        <SearchBar>
+          <InputArea>
+            <Input icon="search" />
+          </InputArea>
+          <FilterIcon>
+            <MaterialCommunityIcons
+              size={22}
+              color="#C4C4C4"
+              name="filter-variant"
+            />
+            <FiText>filtros</FiText>
+          </FilterIcon>
+        </SearchBar>
+        <Local>
+          <Ionicons name="md-pin" size={12} color="#c4c4c4" />
+          <LocalText>Porto Alegre</LocalText>
+        </Local>
         <View style={styles.container}>
           <Slider
             style={{ width: "100%" }}
