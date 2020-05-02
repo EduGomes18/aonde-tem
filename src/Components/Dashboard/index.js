@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { Gray } from "~/Config/Global";
 import { Text, StyleSheet, FlatList } from "react-native";
 import avatar from "~/Assets/Images/avatar.jpg";
 import ChatIcon from "~/Assets/Images/chat.svg";
 import Seta from "~/Assets/Images/seta.svg";
 import Stroke from "~/Assets/Images/stroke.svg";
 import bikebg from "~/Assets/Images/bike.jpg";
-import Input from "~/Components/Input";
+
+import elevationShadowStyle from "~/Components/ShadowFunc";
+
 import {
   Container,
   Area,
@@ -28,16 +31,6 @@ import {
   PromoCard,
   FlatContainer,
 } from "./styles";
-
-function elevationShadowStyle(elevation) {
-  return {
-    elevation,
-    shadowColor: "rgba(0,0,0,0.25)",
-    shadowOffset: { width: 0, height: 10 * elevation },
-    shadowOpacity: 0.2,
-    shadowRadius: 22 * elevation,
-  };
-}
 
 export default function Dashboard({ children }) {
   const [content, showContent] = useState(false);
@@ -74,7 +67,7 @@ export default function Dashboard({ children }) {
         </Chat>
       </Header>
       <Content>
-        <Input icon="search" placeholder="Buscar" />
+        {children}
         <Area area={content} style={styles.shadowArea}>
           {content ? (
             <FlatContainer>

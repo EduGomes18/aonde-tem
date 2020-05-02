@@ -41,6 +41,7 @@ export const Area = styled.View`
   position: ${(props) => (props.content ? "relative" : "absolute")};
   bottom: 0;
   justify-content: flex-start;
+  z-index: 99;
   align-items: center;
 `;
 
@@ -137,7 +138,7 @@ export const RegTitle = styled.Text`
 export const Content = styled.View`
   flex: 1;
   width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `;
 

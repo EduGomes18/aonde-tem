@@ -6,6 +6,7 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
 import CompanyDash from "~/Screens/App/CompanyDash";
 import ClientDash from "~/Screens/App/ClientDash";
+import ClientSearch from "~/Screens/App/ClientSearch";
 
 import Client from "~/Screens/Auth/Client";
 import Company from "~/Screens/Auth/Company";
@@ -18,6 +19,7 @@ const AppNavigator = createSwitchNavigator(
     }),
     App: createSwitchNavigator({
       ClientDash,
+      ClientSearch,
       CompanyDash,
     }),
   },
