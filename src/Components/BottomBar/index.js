@@ -8,26 +8,12 @@ import {
 } from "react-native";
 
 import posed from "react-native-pose";
-import { Principal } from "~/Config/Global";
-
-const windowWidth = Dimensions.get("window").width;
-const tabWidth = windowWidth / 8;
-const SpotLight = posed.View({
-  route0: { x: 0 },
-  route1: { x: tabWidth },
-  route2: { x: tabWidth * 2 },
-  route3: { x: tabWidth * 3 },
-  route4: { x: tabWidth * 4 },
-  route5: { x: tabWidth * 5 },
-  route6: { x: tabWidth * 6 },
-  route7: { x: tabWidth * 7 },
-});
 
 const S = StyleSheet.create({
   container: {
     flexDirection: "row",
     height: 62,
-    elevation: 2,
+    elevation: 4,
     backgroundColor: "#FFDFEE",
   },
   tabButton: { flex: 1, justifyContent: "center", alignItems: "center" },
