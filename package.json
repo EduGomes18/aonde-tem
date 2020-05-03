@@ -13,6 +13,7 @@
     "axios": "^0.19.2",
     "expo": "~37.0.3",
     "expo-font": "^8.1.1",
+    "expo-linear-gradient": "~8.1.0",
     "history": "^4.10.1",
     "immer": "^6.0.3",
     "prop-types": "^15.7.2",
