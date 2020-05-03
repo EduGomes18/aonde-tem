@@ -18,6 +18,7 @@ import ClientSearch from "~/Screens/App/ClientSearch";
 
 import Client from "~/Screens/Auth/Client";
 import Company from "~/Screens/Auth/Company";
+import Create from "~/Screens/Auth/Create";
 
 const MenuBox = () => {
   return (
@@ -70,15 +71,11 @@ const MenuBoxActive = () => {
 
 const AppNavigator = createSwitchNavigator(
   {
-    Auth: createBottomTabNavigator(
+    Auth: createSwitchNavigator(
       {
-        Client: {
-          screen: Client,
-          navigationOptions: {
-            // tabBarIcon: ({ tintColor }) => <Icon name="grocery" color={tintColor} />
-          },
-        },
+        Client,
         Company,
+        Create,
       },
       {
         tabBarComponent: BottomBar,
@@ -145,7 +142,7 @@ const AppNavigator = createSwitchNavigator(
     ),
   },
   {
-    initialRouteName: "App",
+    initialRouteName: "Auth",
   }
 );
 

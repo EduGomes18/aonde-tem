@@ -1,10 +1,14 @@
 import styled from "styled-components/native";
+import { Dimensions } from "react-native";
+import Constants from "expo-constants";
 import { Gray } from "~/Config/Global";
 
 export const Container = styled.View`
   flex: 1;
   height: 100%;
-  padding: 25% 8%;
+  padding-top: ${Constants.statusBarHeight + "px"};
+  padding-left: 8%;
+  padding-right: 8%;
   justify-content: flex-start;
   align-items: center;
 `;
