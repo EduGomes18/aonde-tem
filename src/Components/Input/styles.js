@@ -18,7 +18,7 @@ export const TInput = styled.TextInput.attrs({
   font-size: 14px;
   margin-left: 10px;
   color: #7b7b7b;
-  text-align: ${(props) => (props.placeholder ? "center" : "left")};
+  /* text-align: ${(props) => (props.placeholder ? "center" : "left")}; */
 `;
 
 export const Icon = styled.View`

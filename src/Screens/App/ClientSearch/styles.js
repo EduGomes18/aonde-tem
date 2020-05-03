@@ -5,18 +5,17 @@ export const Container = styled.View``;
 
 export const SearchBar = styled.View`
   width: 100%;
-  padding: 5% 10% 0 10%;
+  padding: 0 10% 0 10%;
   justify-content: center;
   flex-direction: row;
 `;
 export const FilterIcon = styled.TouchableOpacity`
   width: 16%;
-  padding-top: 12px;
   justify-content: center;
   align-items: center;
 `;
 export const InputArea = styled.View`
-  width: 76%;
+  width: 90%;
 `;
 export const FiText = styled.Text`
   font-size: 12px;
@@ -26,9 +25,14 @@ export const FiText = styled.Text`
 export const Local = styled.View`
   width: 80%;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   padding: 0 12px;
+`;
+export const LocalInner = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const LocalText = styled.Text`
@@ -52,6 +56,14 @@ export const RecTitle = styled.Text`
   font-size: 14px;
   font-weight: bold;
 `;
+export const FilterTitle = styled.Text`
+  width: 100%;
+  padding: 0 5%;
+  margin-top: 16px;
+  color: ${LightGray};
+  font-size: 14px;
+  font-weight: bold;
+`;
 
 export const RecDescs = styled.Text`
   font-size: 14px;
@@ -70,7 +82,6 @@ export const RecInner = styled.View`
 export const Filters = styled.View`
   width: 100%;
   justify-content: center;
-  padding: 2% 5%;
   align-items: center;
 `;
 
@@ -86,7 +97,7 @@ export const Kms = styled.Text`
 export const CashArea = styled.View`
   width: 100%;
   padding: 0 2%;
-  margin-top: 12px;
+  margin-top: 26px;
   align-items: center;
   justify-content: space-around;
   flex-direction: row;
@@ -104,4 +115,27 @@ export const Cash = styled.TouchableOpacity`
 export const CashVal = styled.Text`
   color: #ffff;
   font-size: 18px;
+`;
+
+export const ClosedArea = styled.View`
+  width: 100%;
+  padding: 12px 0;
+  flex-direction: row;
+  margin-top: 22px;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const BtnClosed = styled.TouchableOpacity`
+  width: ${(props) => (props.size ? "40%" : "30%")};
+  background: ${(props) => props.color};
+  padding: 8px 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 22px;
+`;
+
+export const BtnText = styled.Text`
+  color: #fff;
+  font-size: 14px;
 `;

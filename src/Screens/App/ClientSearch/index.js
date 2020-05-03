@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Dashboard from "~/Components/Dashboard";
 import Input from "~/Components/Input";
+import { useNavigation } from "react-navigation-hooks";
 import { MaterialCommunityIcons, Ionicons, Entypo } from "@expo/vector-icons";
 import { Text, StyleSheet, View, Slider } from "react-native";
 import {
@@ -19,10 +20,17 @@ import {
   Cash,
   CashArea,
   CashVal,
+  ClosedArea,
+  BtnText,
+  BtnClosed,
+  FilterTitle,
+  LocalInner,
 } from "./styles";
 
 export default function ClientSearch() {
-  const [active, setActive] = useState([]);
+  const { navigate } = useNavigation();
+
+  const [active, setActive] = useState(false);
 
   const activeColor = "#940C29";
 
@@ -39,7 +47,7 @@ export default function ClientSearch() {
       <Dashboard>
         <SearchBar>
           <InputArea>
-            <Input icon="search" />
+            <Input icon="search" placeholder="buscar item ou serviço" />
           </InputArea>
           <FilterIcon>
             <MaterialCommunityIcons
@@ -51,8 +59,19 @@ export default function ClientSearch() {
           </FilterIcon>
         </SearchBar>
         <Local>
-          <Ionicons name="md-pin" size={12} color="#c4c4c4" />
-          <LocalText>Porto Alegre</LocalText>
+          <LocalInner>
+            <Ionicons name="md-pin" size={12} color="#c4c4c4" />
+            <LocalText>Porto Alegre</LocalText>
+          </LocalInner>
+          <BtnClosed
+            onPress={() => {
+              navigate("SearchResult");
+            }}
+            size="lg"
+            color="#73DDB1"
+          >
+            <BtnText>Pesquisar</BtnText>
+          </BtnClosed>
         </Local>
         <Recent>
           <RecTitle>Buscas recentes</RecTitle>
@@ -70,36 +89,47 @@ export default function ClientSearch() {
           </RecInner>
         </Recent>
         <Filters>
-          <RecTitle>Filtros</RecTitle>
+          <FilterTitle>Filtros</FilterTitle>
+          <View style={styles.container}>
+            <Kms>{value + "KM"}</Kms>
+            <Slider
+              style={{ width: "100%" }}
+              maximumValue={100}
+              minimumTrackTintColor="#AB223F"
+              maximumTrackTintColor="#CDCDCD"
+              thumbTintColor="#AB223F"
+              minimumValue={0}
+              value={value}
+              step={1}
+              onValueChange={handleChange}
+            />
+          </View>
+          <CashArea>
+            <Cash color={inactiveColor}>
+              <CashVal>$</CashVal>
+            </Cash>
+            <Cash color={inactiveColor}>
+              <CashVal>$$</CashVal>
+            </Cash>
+            <Cash color={activeColor}>
+              <CashVal>$$$</CashVal>
+            </Cash>
+            <Cash color={inactiveColor}>
+              <CashVal>$$$$</CashVal>
+            </Cash>
+          </CashArea>
+          <ClosedArea>
+            <BtnClosed color="#73DDB1">
+              <BtnText>Aberto agora</BtnText>
+            </BtnClosed>
+            <BtnClosed color="#FBD061">
+              <BtnText>Abre logo</BtnText>
+            </BtnClosed>
+            <BtnClosed color="#F48686">
+              <BtnText>Fechado</BtnText>
+            </BtnClosed>
+          </ClosedArea>
         </Filters>
-        <View style={styles.container}>
-          <Kms>{value + "KM"}</Kms>
-          <Slider
-            style={{ width: "100%" }}
-            maximumValue={100}
-            minimumTrackTintColor="#AB223F"
-            maximumTrackTintColor="#CDCDCD"
-            thumbTintColor="#AB223F"
-            minimumValue={0}
-            value={value}
-            step={1}
-            onValueChange={handleChange}
-          />
-        </View>
-        <CashArea>
-          <Cash color={inactiveColor}>
-            <CashVal>$</CashVal>
-          </Cash>
-          <Cash color={inactiveColor}>
-            <CashVal>$$</CashVal>
-          </Cash>
-          <Cash color={activeColor}>
-            <CashVal>$$$</CashVal>
-          </Cash>
-          <Cash color={inactiveColor}>
-            <CashVal>$$$$</CashVal>
-          </Cash>
-        </CashArea>
       </Dashboard>
     </>
   );
