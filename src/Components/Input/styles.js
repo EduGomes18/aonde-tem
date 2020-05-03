@@ -4,7 +4,7 @@ export const Container = styled.View`
   padding: 0 38px;
   height: 46px;
   margin: 16px 0;
-  width: 100%;
+  width: ${(props) => (props.sm ? "90%" : "100%")};
   flex-direction: row;
   background: #ffffff;
   border-radius: 41px;

@@ -4,6 +4,10 @@ import PropTypes from "prop-types";
 import { Container, TInput, Icon } from "./styles";
 import Person from "~/Assets/Images/person.svg";
 import Pass from "~/Assets/Images/pass.svg";
+import Insta from "~/Assets/Images/insta.svg";
+import Face from "~/Assets/Images/face2.svg";
+import Whats from "~/Assets/Images/whats2.svg";
+import Smarth from "~/Assets/Images/smarth.svg";
 import Search from "~/Assets/Images/search.svg";
 
 function elevationShadowStyle(elevation) {
@@ -16,7 +20,7 @@ function elevationShadowStyle(elevation) {
   };
 }
 
-export default function Input({ icon, safe, placeholder }) {
+export default function Input({ icon, safe, placeholder, sm, ...rest }) {
   const Ic = function () {
     if (icon === "pass") {
       return <Pass />;
@@ -24,13 +28,29 @@ export default function Input({ icon, safe, placeholder }) {
     if (icon === "person") {
       return <Person />;
     }
+    if (icon === "insta") {
+      return <Insta />;
+    }
+    if (icon === "face") {
+      return <Face />;
+    }
+    if (icon === "whats") {
+      return <Whats />;
+    }
+    if (icon === "smarth") {
+      return <Smarth />;
+    }
     if (icon === "search") {
       return <Search style={{ marginLeft: 10 }} />;
+    }
+
+    if (!icon) {
+      return <> </>;
     }
   };
   const result = <Ic />;
   return (
-    <Container style={styles.shadow}>
+    <Container sm={sm} {...rest} style={styles.shadow}>
       <Icon>{result}</Icon>
 
       <TInput placeholder={placeholder} secureTextEntry={safe} />
