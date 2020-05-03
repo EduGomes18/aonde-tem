@@ -38,13 +38,17 @@ import {
 } from "./styles";
 
 export default function CompanyStore() {
-  const { routeName } = useNavigationState();
+  const { navigate } = useNavigation();
 
   return (
     <Container>
       <Header>
         <HeaderBg resizeMode="cover" source={bg} />
-        <BackButton>
+        <BackButton
+          onPress={() => {
+            navigate("SearchResult");
+          }}
+        >
           <Entypo size={42} color="#F15F7E" name="chevron-left" />
         </BackButton>
         <Points>

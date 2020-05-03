@@ -109,7 +109,7 @@ export default function SearchResult() {
 
   return (
     <>
-      <Dashboard back={true} route="ClientSearch">
+      <Dashboard back={true} route="Search">
         <SearchBar>
           <InputArea>
             <Input icon="search" placeholder="buscar item ou serviço" />
