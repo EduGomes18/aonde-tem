@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
+import { useNavigation } from "react-navigation-hooks";
 import avatar from "~/Assets/Images/pic.jpg";
 import { Gray } from "~/Config/Global";
 import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
@@ -27,6 +28,8 @@ import {
   BInner,
 } from "./styles";
 export default function Dash() {
+  const { navigate } = useNavigation();
+
   return (
     <Container>
       <Header>
@@ -49,7 +52,12 @@ export default function Dash() {
               <BTitle>seu negócio</BTitle>
             </BInner>
 
-            <Card style={styles.shadow}>
+            <Card
+              onPress={() => {
+                navigate("Business");
+              }}
+              style={styles.shadow}
+            >
               <Plus />
               <CardDesc>adicionar negócio</CardDesc>
             </Card>
@@ -59,7 +67,12 @@ export default function Dash() {
               <FontAwesome5 name="percentage" color={Gray} size={14} />
               <BTitle>suas promoções</BTitle>
             </BInner>
-            <Card style={styles.shadow}>
+            <Card
+              onPress={() => {
+                navigate("Promo");
+              }}
+              style={styles.shadow}
+            >
               <Plus />
               <CardDesc>adicionar promoção</CardDesc>
             </Card>
@@ -69,7 +82,12 @@ export default function Dash() {
               <FontAwesome size={14} color={Gray} name="calendar" />
               <BTitle>sua agenda</BTitle>
             </BInner>
-            <Card style={styles.shadow}>
+            <Card
+              onPress={() => {
+                navigate("Schedule");
+              }}
+              style={styles.shadow}
+            >
               <Plus />
               <CardDesc>adicionar horário</CardDesc>
             </Card>
