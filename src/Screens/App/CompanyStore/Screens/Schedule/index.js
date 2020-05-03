@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, FlatList, ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-
+import { useNavigation } from "react-navigation-hooks";
 import { Entypo } from "@expo/vector-icons";
 import user1 from "~/Assets/Images/Userpic.png";
 import mani from "~/Assets/Images/man.jpg";
@@ -34,6 +34,8 @@ import {
 import elevationShadowStyle from "~/Components/ShadowFunc";
 
 const Schedule = () => {
+  const { navigate } = useNavigation();
+
   const data = [
     { id: "00", desc: "Adorei o servico! A Maria e uma fofa!", source: user2 },
     { id: "01", desc: "boa profisional, adorei", source: user1 },
@@ -133,7 +135,11 @@ const Schedule = () => {
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => {
               return (
-                <ServicesArea>
+                <ServicesArea
+                  onPress={() => {
+                    navigate("Services");
+                  }}
+                >
                   <ServicesCircle style={styles.shadow}>
                     <ServPic source={item.source} />
                   </ServicesCircle>

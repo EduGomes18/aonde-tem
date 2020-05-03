@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
+import { useNavigation, useNavigationState } from "react-navigation-hooks";
 import avatar from "~/Assets/Images/mask.png";
 import Routes from "./Routes";
 import {
@@ -37,6 +38,8 @@ import {
 } from "./styles";
 
 export default function CompanyStore() {
+  const { routeName } = useNavigationState();
+
   return (
     <Container>
       <Header>

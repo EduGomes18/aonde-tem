@@ -93,7 +93,7 @@ export const PromoDesc = styled.Text`
   color: ${Black};
 `;
 
-export const ServicesArea = styled.View`
+export const ServicesArea = styled.TouchableOpacity`
   width: ${Dimensions.get("window").width / 3 + "px"};
   height: ${Dimensions.get("window").width / 3 + "px"};
   justify-content: space-around;
