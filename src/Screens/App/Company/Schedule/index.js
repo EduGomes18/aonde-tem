@@ -3,6 +3,8 @@ import { View } from "react-native";
 
 // import { Container } from './styles';
 
-export default function CompanyDash() {
+const Schedule = () => {
   return <View />;
-}
+};
+
+export default Schedule;

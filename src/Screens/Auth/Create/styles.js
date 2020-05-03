@@ -107,8 +107,10 @@ export const Bussiness = styled.View`
 
 export const BussIner = styled.View`
   width: 100%;
-  margin: 22px 0;
-  justify-content: space-around;
+  height: 52px;
+  margin-bottom: 32px;
+  align-items: center;
+  justify-content: center;
   flex-direction: row;
 `;
 
@@ -116,4 +118,10 @@ export const End = styled.View`
   width: 80%;
   justify-content: center;
   align-items: center;
+`;
+
+export const Option = styled.Text`
+  font-size: 18px;
+  font-weight: bold;
+  color: ${(props) => props.color};
 `;

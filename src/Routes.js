@@ -10,11 +10,11 @@ import BottomBar from "~/Components/BottomBar";
 //import { useSelector } from "react-redux";
 //import store from "~/Store";
 
-import Settings from "~/Screens/App/Settings";
-import CompanyDash from "~/Screens/App/CompanyDash";
+import Settings from "~/Screens/App/Client/Settings";
+import CompanyDash from "~/Screens/App/Company/";
 
-import ClientDash from "~/Screens/App/ClientDash";
-import ClientSearch from "~/Screens/App/ClientSearch";
+import ClientDash from "~/Screens/App/Client/ClientDash";
+import ClientSearch from "~/Screens/App/Client/ClientSearch";
 
 import Client from "~/Screens/Auth/Client";
 import Company from "~/Screens/Auth/Company";
@@ -71,78 +71,79 @@ const MenuBoxActive = () => {
 
 const AppNavigator = createSwitchNavigator(
   {
-    Auth: createSwitchNavigator(
+    Auth: createSwitchNavigator({
+      Client,
+      Company,
+      Create,
+    }),
+    App: createSwitchNavigator(
       {
-        Client,
-        Company,
-        Create,
+        Client: createBottomTabNavigator(
+          {
+            ClientSearch: {
+              screen: ClientSearch,
+              navigationOptions: {
+                tabBarIcon: ({ focused }) => {
+                  if (focused) {
+                    return (
+                      <MaterialIcons size={48} color="#F15F7E" name="person" />
+                    );
+                  } else {
+                    return (
+                      <MaterialIcons size={38} color="#F15F7E" name="person" />
+                    );
+                  }
+                },
+              },
+            },
+            ClientDash: {
+              screen: ClientDash,
+              navigationOptions: {
+                tabBarIcon: ({ focused }) => {
+                  if (focused) {
+                    return <MenuBoxActive />;
+                  } else {
+                    return <MenuBox />;
+                  }
+                },
+              },
+            },
+            Settings: {
+              screen: Settings,
+              navigationOptions: {
+                tabBarIcon: ({ focused }) => {
+                  if (focused) {
+                    return (
+                      <Ionicons size={48} color="#F15F7E" name="ios-settings" />
+                    );
+                  } else {
+                    return (
+                      <Ionicons size={38} color="#F15F7E" name="ios-settings" />
+                    );
+                  }
+                },
+              },
+            },
+          },
+          {
+            tabBarComponent: BottomBar,
+            tabBarOptions: {
+              activeTintColor: "#E2283D",
+              inactiveTintColor: "#5D5D5D",
+            },
+          }
+        ),
+        Company: createSwitchNavigator({
+          CompanyDash,
+        }),
       },
       {
-        tabBarComponent: BottomBar,
-        tabBarOptions: {
-          activeTintColor: "#E2283D",
-          inactiveTintColor: "#5D5D5D",
-        },
-      }
-    ),
-    App: createBottomTabNavigator(
-      {
-        ClientSearch: {
-          screen: ClientSearch,
-          navigationOptions: {
-            tabBarIcon: ({ focused }) => {
-              if (focused) {
-                return (
-                  <MaterialIcons size={48} color="#F15F7E" name="person" />
-                );
-              } else {
-                return (
-                  <MaterialIcons size={38} color="#F15F7E" name="person" />
-                );
-              }
-            },
-          },
-        },
-        ClientDash: {
-          screen: ClientDash,
-          navigationOptions: {
-            tabBarIcon: ({ focused }) => {
-              if (focused) {
-                return <MenuBoxActive />;
-              } else {
-                return <MenuBox />;
-              }
-            },
-          },
-        },
-        Settings: {
-          screen: Settings,
-          navigationOptions: {
-            tabBarIcon: ({ focused }) => {
-              if (focused) {
-                return (
-                  <Ionicons size={48} color="#F15F7E" name="ios-settings" />
-                );
-              } else {
-                return (
-                  <Ionicons size={38} color="#F15F7E" name="ios-settings" />
-                );
-              }
-            },
-          },
-        },
-      },
-      {
-        tabBarComponent: BottomBar,
-        tabBarOptions: {
-          activeTintColor: "#E2283D",
-          inactiveTintColor: "#5D5D5D",
-        },
+        initialRouteName: "Company",
       }
     ),
   },
   {
-    initialRouteName: "Auth",
+    initialRouteName: "App",
   }
 );
 

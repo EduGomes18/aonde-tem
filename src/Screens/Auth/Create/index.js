@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Switch } from "react-native";
 import Pink from "~/Assets/Images/pink.svg";
 import Blue from "~/Assets/Images/blue.svg";
 import Purple from "~/Assets/Images/purple.svg";
@@ -9,6 +9,30 @@ import Input from "~/Components/Input";
 import Button from "~/Components/Button";
 
 import elevationShadowStyle from "~/Components/ShadowFunc";
+
+const styles = StyleSheet.create({
+  shadow: {
+    ...elevationShadowStyle(22),
+    backgroundColor: "#fff",
+  },
+  shadowArea: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 11,
+    },
+    shadowOpacity: 0.55,
+    shadowRadius: 14.78,
+
+    elevation: 22,
+  },
+  inactive: {
+    opacity: 0.5,
+  },
+  active: {
+    opacity: 1,
+  },
+});
 
 import {
   Container,
@@ -27,9 +51,20 @@ import {
   Bussiness,
   BussIner,
   End,
+  Option,
 } from "./styles";
 
 const Create = () => {
+  const [active, setActive] = useState(false);
+
+  function handleClient() {
+    if (active === false) {
+      setActive(true);
+    } else {
+      setActive(false);
+    }
+  }
+
   return (
     <Container>
       <Header>
@@ -72,35 +107,28 @@ const Create = () => {
         <Input safe={true} icon="pass" placeholder="Confirmar senha" />
       </CreateArea>
       <Bussiness>
-        <Title>Empresa ou Cliente?</Title>
         <BussIner>
-          <Button size="sm" color="#7A6BB0" textcolor="#fff" title="Empresa" />
-          <Button size="sm" color="#73DDB1" textcolor="#fff" title="Cliente" />
+          <Option color="#7A6BB0">Empresa</Option>
+          <Switch
+            trackColor={{ true: "#73DDB1", false: "#7A6BB0" }}
+            onValueChange={handleClient}
+            value={active}
+          />
+          <Option color="#73DDB1">Cliente</Option>
         </BussIner>
       </Bussiness>
       <End>
-        <Button color="#F15F7E" textcolor="#fff" title="Acessar" />
+        <Button
+          onPress={() => {
+            console.log("check");
+          }}
+          color="#F15F7E"
+          textcolor="#fff"
+          title="Acessar"
+        />
       </End>
     </Container>
   );
 };
 
 export default Create;
-
-const styles = StyleSheet.create({
-  shadow: {
-    ...elevationShadowStyle(22),
-    backgroundColor: "#fff",
-  },
-  shadowArea: {
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 11,
-    },
-    shadowOpacity: 0.55,
-    shadowRadius: 14.78,
-
-    elevation: 22,
-  },
-});

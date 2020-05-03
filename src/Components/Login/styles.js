@@ -17,6 +17,7 @@ export const Logo = styled.Image``;
 
 export const LogoArea = styled.View`
   width: 100%;
+  margin-top: 22px;
   justify-content: center;
   align-items: center;
 `;
@@ -37,7 +38,7 @@ export const CheckArea = styled.TouchableOpacity`
   width: 60%;
   align-self: flex-start;
   padding-left: 6px;
-  margin-left: 12px;
+  margin: 0 0 22px 0;
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
@@ -52,15 +53,10 @@ export const CheckInner = styled.View`
   width: 30%;
 `;
 
-export const BtnArea = styled.View`
-  width: 90%;
-  margin: 10% 0 8px 0;
-`;
-
 export const Forgot = styled.TouchableOpacity`
   padding-right: 20%;
   width: 100%;
-  margin-bottom: 10%;
+  margin: 22px 0;
   justify-content: flex-end;
   align-items: center;
   flex-direction: row;

@@ -52,9 +52,14 @@ export default function Login({ logo }) {
         </CheckInner>
         <SaveAcc>Lembrar usuário</SaveAcc>
       </CheckArea>
-      <BtnArea>
-        <Button title="Acessar" color={Principal} textcolor="#fff" />
-      </BtnArea>
+
+      <Button
+        style={{ margin: 22 }}
+        title="Acessar"
+        color={Principal}
+        textcolor="#fff"
+      />
+
       <Forgot>
         <ForgotText>esqueceu a senha?</ForgotText>
       </Forgot>
