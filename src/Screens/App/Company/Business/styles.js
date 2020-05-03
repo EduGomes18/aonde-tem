@@ -53,10 +53,3 @@ export const Content = styled.View`
   border-top-left-radius: 22px;
   border-top-right-radius: 22px;
 `;
-export const ContentInner = styled.View`
-  width: 100%;
-  height: 20px;
-  position: absolute;
-  top: 8%;
-  background: #fff;
-`;

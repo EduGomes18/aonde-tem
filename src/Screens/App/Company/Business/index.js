@@ -15,7 +15,6 @@ import {
   Name,
   NameDesc,
   Content,
-  ContentInner,
 } from "./styles";
 
 const Business = () => {
@@ -42,7 +41,6 @@ const Business = () => {
       </Header>
       <Content>
         <Routes />
-        <ContentInner></ContentInner>
       </Content>
     </Container>
   );
