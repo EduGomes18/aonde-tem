@@ -79,7 +79,7 @@ export const DescribeText = styled.Text`
   color: ${Gray};
 `;
 
-export const HistoryCard = styled.View`
+export const HistoryCard = styled.TouchableOpacity`
   width: ${Dimensions.get("window").width / 2.5 + "px"};
   height: ${Dimensions.get("window").width / 3 + "px"};
   border-radius: 22px;

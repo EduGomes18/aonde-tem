@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 import { Dimensions } from "react-native";
 import Constants from "expo-constants";
-import { Principal, Gray, Black, White } from "~/Config/Global";
+import { Principal, Gray, Black, White, LightGray } from "~/Config/Global";
 
 export const Container = styled.View`
   flex: 1;
@@ -96,7 +96,7 @@ export const Name = styled.Text`
 export const Chat = styled.TouchableOpacity`
   justify-content: flex-start;
   align-items: center;
-  padding-top: 6%;
+  padding-top: 50%;
 `;
 
 export const Content = styled.View`
@@ -104,4 +104,19 @@ export const Content = styled.View`
   width: 100%;
   justify-content: flex-start;
   align-items: center;
+`;
+
+export const BackButton = styled.TouchableOpacity`
+  width: 100%;
+  flex-direction: row;
+  align-self: flex-start;
+`;
+
+export const Back = styled.Text`
+  color: ${LightGray};
+  font-size: 14px;
+`;
+
+export const ChatArea = styled.View`
+  justify-content: space-between;
 `;

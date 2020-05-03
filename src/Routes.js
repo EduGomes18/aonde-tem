@@ -12,6 +12,7 @@ import BottomBar from "~/Components/BottomBar";
 
 import Settings from "~/Screens/App/Settings";
 import CompanyDash from "~/Screens/App/CompanyDash";
+import CompanyStore from "~/Screens/App/CompanyStore";
 import ClientDash from "~/Screens/App/ClientDash";
 import ClientSearch from "~/Screens/App/ClientSearch";
 import SearchResult from "~/Screens/App/SearchResult";
@@ -72,6 +73,7 @@ const AppNavigator = createSwitchNavigator(
   {
     Stack: createSwitchNavigator({
       SearchResult,
+      CompanyStore,
     }),
     Auth: createBottomTabNavigator(
       {

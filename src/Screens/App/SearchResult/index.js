@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Dashboard from "~/Components/Dashboard";
 import Input from "~/Components/Input";
+import { useNavigation } from "react-navigation-hooks";
 import { MaterialCommunityIcons, Ionicons, Entypo } from "@expo/vector-icons";
 import { View, StyleSheet, Image, FlatList } from "react-native";
 import elevationShadowStyle from "~/Components/ShadowFunc";
@@ -23,6 +24,8 @@ import {
 } from "./styles";
 
 export default function SearchResult() {
+  const { navigate } = useNavigation();
+
   const [active, setActive] = useState(false);
 
   const Time = function (time) {
@@ -106,7 +109,7 @@ export default function SearchResult() {
 
   return (
     <>
-      <Dashboard>
+      <Dashboard back={true} route="ClientSearch">
         <SearchBar>
           <InputArea>
             <Input icon="search" placeholder="buscar item ou serviço" />
@@ -145,7 +148,12 @@ export default function SearchResult() {
                       alignItems: "center",
                     }}
                   >
-                    <HistoryCard style={styles.shadow}>
+                    <HistoryCard
+                      onPress={() => {
+                        navigate("CompanyStore");
+                      }}
+                      style={styles.shadow}
+                    >
                       <Image source={item.logo} />
                     </HistoryCard>
                     <DescArea>

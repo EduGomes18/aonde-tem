@@ -3,6 +3,9 @@ import { Gray } from "~/Config/Global";
 import { Text, StyleSheet, FlatList } from "react-native";
 import avatar from "~/Assets/Images/avatar.jpg";
 import ChatIcon from "~/Assets/Images/chat.svg";
+import { Entypo } from "@expo/vector-icons";
+import { useNavigation } from "react-navigation-hooks";
+import { LightGray } from "~/Config/Global";
 
 import bikebg from "~/Assets/Images/bike.jpg";
 
@@ -23,20 +26,20 @@ import {
   Chat,
   HeaderBg,
   HeaderShade,
-  Region,
-  RegTitle,
   Content,
-  RegClosed,
-  PromoCard,
-  FlatContainer,
+  Back,
+  BackButton,
+  ChatArea,
 } from "./styles";
 
-export default function Dashboard({ children }) {
+export default function Dashboard({ back, children, route }) {
+  const { navigate } = useNavigation();
   return (
     <Container>
       <Header>
         <HeaderBg source={bikebg} />
         <HeaderShade />
+
         <AvatarArea>
           <AvtCircle style={styles.shadow}>
             <Avatar source={avatar}></Avatar>
@@ -49,9 +52,23 @@ export default function Dashboard({ children }) {
           <Points>₳ 20,00</Points>
           <PtDesc>seus pontos</PtDesc>
         </HeaderInner>
-        <Chat>
-          <ChatIcon />
-        </Chat>
+        <ChatArea>
+          <Chat>
+            <ChatIcon />
+          </Chat>
+          {back ? (
+            <BackButton
+              onPress={() => {
+                navigate(route);
+              }}
+            >
+              <Entypo size={22} color={LightGray} name="chevron-left" />
+              <Back>Voltar</Back>
+            </BackButton>
+          ) : (
+            <></>
+          )}
+        </ChatArea>
       </Header>
       <Content>{children}</Content>
     </Container>
