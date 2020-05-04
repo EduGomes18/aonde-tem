@@ -44,8 +44,12 @@ export default function Input({ icon, safe, placeholder, sm, ...rest }) {
       return <Search style={{ marginLeft: 10 }} />;
     }
 
+    if (icon) {
+      return icon;
+    }
+
     if (!icon) {
-      return <> </>;
+      return <View />;
     }
   };
   const result = <Ic />;

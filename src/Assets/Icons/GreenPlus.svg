@@ -1,0 +1,15 @@
+<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="46" height="46">
+<rect x="0.5" y="0.5" width="45" height="45" rx="22.5" fill="#C4C4C4" stroke="black"/>
+</mask>
+<g mask="url(#mask0)">
+<rect x="-2.67236" y="-0.293213" width="51.3448" height="45.7931" fill="white" stroke="white"/>
+<rect x="20.3845" y="9" width="6.23077" height="27" rx="3.11538" fill="#73DDB1"/>
+<rect x="20.3845" y="9" width="6.23077" height="27" rx="3.11538" fill="#73DDB1"/>
+<rect x="20.3845" y="9" width="6.23077" height="27" rx="3.11538" fill="#73DDB1"/>
+<rect x="37" y="19.3845" width="6.23077" height="27" rx="3.11539" transform="rotate(90 37 19.3845)" fill="#73DDB1"/>
+<rect x="37" y="19.3845" width="6.23077" height="27" rx="3.11539" transform="rotate(90 37 19.3845)" fill="#73DDB1"/>
+<rect x="37" y="19.3845" width="6.23077" height="27" rx="3.11539" transform="rotate(90 37 19.3845)" fill="#73DDB1"/>
+<circle cx="23" cy="23" r="22" stroke="#C4C4C4" stroke-width="2"/>
+</g>
+</svg>
