@@ -41,6 +41,7 @@ export default function Login({ logo }) {
   const { navigate } = useNavigation();
 
   function handleSubmit() {
+    console.log(email, password);
     dispatch(signInRequest(email, password));
   }
 
@@ -61,6 +62,8 @@ export default function Login({ logo }) {
       <Input
         placeholder="email"
         keyboardType="email-address"
+        autoCorrect={false}
+        autoCapitalize="none"
         returnKeyType="next"
         onSubmitEditing={() => passwordRef.current.focus()}
         value={email}

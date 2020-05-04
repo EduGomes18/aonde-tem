@@ -46,8 +46,10 @@ export const AvatarArea = styled.View`
 `;
 
 export const HeaderInner = styled.View`
-  width: 55%;
+  width: 80%;
   height: 80%;
+  padding-right: 6%;
+  align-items: flex-end;
   justify-content: center;
 `;
 
@@ -117,4 +119,14 @@ export const BInner = styled.View`
   height: 28px;
   flex-direction: row;
   align-items: center;
+`;
+
+export const LogoutBtn = styled.TouchableOpacity`
+  width: 20%;
+  justify-content: center;
+  align-items: center;
+`;
+export const LogoutText = styled.Text`
+  color: #fff;
+  font-size: 10px;
 `;

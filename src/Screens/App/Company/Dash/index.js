@@ -1,9 +1,11 @@
 import React from "react";
 import { StyleSheet } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigation } from "react-navigation-hooks";
+import { signOut } from "~/Store/modules/login/actions";
 import avatar from "~/Assets/Images/pic.jpg";
-import { Gray } from "~/Config/Global";
-import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
+import { Gray, White } from "~/Config/Global";
+import { FontAwesome, FontAwesome5, SimpleLineIcons } from "@expo/vector-icons";
 
 import Plus from "~/Assets/Images/Plus.svg";
 
@@ -26,10 +28,16 @@ import {
   Business,
   CardDesc,
   BInner,
+  LogoutBtn,
+  LogoutText,
 } from "./styles";
 export default function Dash() {
+  const dispatch = useDispatch();
   const { navigate } = useNavigation();
 
+  function handleLogout() {
+    dispatch(signOut());
+  }
   return (
     <Container>
       <Header>
@@ -38,6 +46,10 @@ export default function Dash() {
           <Points>₳ 0,00</Points>
           <PointsDesc>seus pontos</PointsDesc>
         </HeaderInner>
+        <LogoutBtn onPress={handleLogout}>
+          <SimpleLineIcons name="logout" size={22} color={White} />
+          <LogoutText>logout</LogoutText>
+        </LogoutBtn>
       </Header>
       <Content>
         <AvatarArea>

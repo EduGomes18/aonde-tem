@@ -3,6 +3,7 @@ import produce from "immer";
 const INITIAL_STATE = {
   jwt: null,
   signed: false,
+  business: null,
   loading: false,
 };
 
@@ -12,6 +13,7 @@ export default function login(state = INITIAL_STATE, action) {
       case "@login/SIGN_IN_SUCCESS": {
         draft.jwt = action.payload.jwt;
         draft.signed = true;
+        draft.business = action.payload.user.business;
         draft.loading = false;
         break;
       }

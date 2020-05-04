@@ -1,4 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigation } from "react-navigation-hooks";
+import { signOut } from "~/Store/modules/login/actions";
+
+import Button from "~/Components/Button";
 import {
   DescribeArea,
   DescribeText,
@@ -7,28 +12,28 @@ import {
   SearchButton,
   SearchText,
 } from "./styles";
-import { useNavigation } from "react-navigation-hooks";
-import { Gray } from "~/Config/Global";
-import { Text, StyleSheet, FlatList } from "react-native";
-import Input from "~/Components/Input";
-import Search from "~/Assets/Images/search.svg";
-import { FontAwesome } from "@expo/vector-icons";
+import { Principal, White } from "~/Config/Global";
 
 import Dashboard from "~/Components/Dashboard";
 
-import elevationShadowStyle from "~/Components/ShadowFunc";
-
 export default function Settings() {
+  const dispatch = useDispatch();
+  const { navigate } = useNavigation();
+
+  function handleLogout() {
+    dispatch(signOut());
+  }
+
   return (
     <>
-      <Dashboard></Dashboard>
+      <Dashboard>
+        <Button
+          color={Principal}
+          title="LOGOUT"
+          onPress={handleLogout}
+          textcolor={White}
+        ></Button>
+      </Dashboard>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  shadow: {
-    ...elevationShadowStyle(3),
-    backgroundColor: "#fff",
-  },
-});

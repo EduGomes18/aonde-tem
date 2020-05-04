@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import store from "~/Store";
+import { store } from "~/Store";
 
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createBottomTabNavigator } from "react-navigation-tabs";
@@ -8,10 +8,6 @@ import { View } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import BottomBar from "~/Components/BottomBar";
-
-//para fazer autenticacao
-//import { useSelector } from "react-redux";
-//import store from "~/Store";
 
 import Settings from "~/Screens/App/Client/Settings";
 import CompanyDash from "~/Screens/App/Company/";
@@ -22,6 +18,8 @@ import ClientSearch from "~/Screens/App/Client/ClientSearch";
 import Client from "~/Screens/Auth/Client";
 import Company from "~/Screens/Auth/Company";
 import Create from "~/Screens/Auth/Create";
+
+const business = store.getState().login.business;
 
 const MenuBox = () => {
   return (
@@ -72,84 +70,99 @@ const MenuBoxActive = () => {
   );
 };
 
-const AppNavigator = createSwitchNavigator(
-  {
-    Auth: createSwitchNavigator({
-      Client,
-      Company,
-      Create,
-    }),
-    App: createSwitchNavigator(
+export default (isSigned = false, isBusiness = business) =>
+  createAppContainer(
+    createSwitchNavigator(
       {
-        Client: createBottomTabNavigator(
+        Auth: createSwitchNavigator({
+          Client,
+          Company,
+          Create,
+        }),
+        App: createSwitchNavigator(
           {
-            ClientSearch: {
-              screen: ClientSearch,
-              navigationOptions: {
-                tabBarIcon: ({ focused }) => {
-                  if (focused) {
-                    return (
-                      <MaterialIcons size={48} color="#F15F7E" name="person" />
-                    );
-                  } else {
-                    return (
-                      <MaterialIcons size={38} color="#F15F7E" name="person" />
-                    );
-                  }
+            Client: createBottomTabNavigator(
+              {
+                ClientSearch: {
+                  screen: ClientSearch,
+                  navigationOptions: {
+                    tabBarIcon: ({ focused }) => {
+                      if (focused) {
+                        return (
+                          <MaterialIcons
+                            size={48}
+                            color="#F15F7E"
+                            name="person"
+                          />
+                        );
+                      } else {
+                        return (
+                          <MaterialIcons
+                            size={38}
+                            color="#F15F7E"
+                            name="person"
+                          />
+                        );
+                      }
+                    },
+                  },
+                },
+                ClientDash: {
+                  screen: ClientDash,
+                  navigationOptions: {
+                    tabBarIcon: ({ focused }) => {
+                      if (focused) {
+                        return <MenuBoxActive />;
+                      } else {
+                        return <MenuBox />;
+                      }
+                    },
+                  },
+                },
+                Settings: {
+                  screen: Settings,
+                  navigationOptions: {
+                    tabBarIcon: ({ focused }) => {
+                      if (focused) {
+                        return (
+                          <Ionicons
+                            size={48}
+                            color="#F15F7E"
+                            name="ios-settings"
+                          />
+                        );
+                      } else {
+                        return (
+                          <Ionicons
+                            size={38}
+                            color="#F15F7E"
+                            name="ios-settings"
+                          />
+                        );
+                      }
+                    },
+                  },
                 },
               },
-            },
-            ClientDash: {
-              screen: ClientDash,
-              navigationOptions: {
-                tabBarIcon: ({ focused }) => {
-                  if (focused) {
-                    return <MenuBoxActive />;
-                  } else {
-                    return <MenuBox />;
-                  }
+              {
+                tabBarComponent: BottomBar,
+                tabBarOptions: {
+                  activeTintColor: "#E2283D",
+                  inactiveTintColor: "#5D5D5D",
                 },
-              },
-            },
-            Settings: {
-              screen: Settings,
-              navigationOptions: {
-                tabBarIcon: ({ focused }) => {
-                  if (focused) {
-                    return (
-                      <Ionicons size={48} color="#F15F7E" name="ios-settings" />
-                    );
-                  } else {
-                    return (
-                      <Ionicons size={38} color="#F15F7E" name="ios-settings" />
-                    );
-                  }
-                },
-              },
-            },
+              }
+            ),
+            Company: createSwitchNavigator({
+              CompanyDash,
+            }),
           },
           {
-            tabBarComponent: BottomBar,
-            tabBarOptions: {
-              activeTintColor: "#E2283D",
-              inactiveTintColor: "#5D5D5D",
-            },
+            initialRouteName: isBusiness ? "Company" : "Client",
           }
         ),
-        Company: createSwitchNavigator({
-          CompanyDash,
-        }),
       },
       {
-        initialRouteName: "Company",
+        initialRouteName: isSigned ? "App" : "Auth",
       }
-    ),
-  },
-  {
-    initialRouteName: isSigned ? "App" : "Auth",
-  }
-);
-
-const AppContainer = createAppContainer(AppNavigator);
-
-export default AppContainer;
+    )
+  );

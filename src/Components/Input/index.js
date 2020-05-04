@@ -54,10 +54,10 @@ export default function Input({ icon, safe, placeholder, sm, ...rest }) {
   };
   const result = <Ic />;
   return (
-    <Container sm={sm} {...rest} style={styles.shadow}>
+    <Container sm={sm} style={styles.shadow}>
       <Icon>{result}</Icon>
 
-      <TInput placeholder={placeholder} secureTextEntry={safe} />
+      <TInput {...rest} placeholder={placeholder} secureTextEntry={safe} />
     </Container>
   );
 }
