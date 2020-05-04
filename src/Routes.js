@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import store from "~/Store";
+
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { View } from "react-native";
@@ -143,7 +146,7 @@ const AppNavigator = createSwitchNavigator(
     ),
   },
   {
-    initialRouteName: "App",
+    initialRouteName: isSigned ? "App" : "Auth",
   }
 );
 

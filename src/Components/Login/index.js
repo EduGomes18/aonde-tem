@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "react-navigation-hooks";
+
+import { signInRequest } from "~/Store/modules/login/actions";
+
 import PropTypes from "prop-types";
+
 import {
   Container,
   CheckArea,
@@ -15,6 +20,7 @@ import {
   CreateAcc,
   CreateText,
 } from "./styles";
+
 import { Text } from "react-native";
 import Button from "~/Components/Button";
 import Input from "~/Components/Input";
@@ -27,7 +33,19 @@ import { Principal, Gray } from "~/Config/Global";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function Login({ logo }) {
+  const dispatch = useDispatch();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const { navigate } = useNavigation();
+
+  function handleSubmit() {
+    dispatch(signInRequest(email, password));
+  }
+
+  const passwordRef = useRef();
+
   const [check, setCheck] = useState(true);
 
   function handleCheck() {
@@ -40,8 +58,25 @@ export default function Login({ logo }) {
         <Google />
         <Face />
       </Social>
-      <Input icon="person" />
-      <Input safe={true} icon="pass" />
+      <Input
+        placeholder="email"
+        keyboardType="email-address"
+        returnKeyType="next"
+        onSubmitEditing={() => passwordRef.current.focus()}
+        value={email}
+        onChangeText={setEmail}
+        icon="person"
+      />
+      <Input
+        placeholder="senha"
+        ref={passwordRef}
+        returnKeyType="send"
+        onSubmitEditing={handleSubmit}
+        value={password}
+        onChangeText={setPassword}
+        safe={true}
+        icon="pass"
+      />
       <CheckArea onPress={handleCheck}>
         <CheckInner>
           <MaterialCommunityIcons
@@ -54,6 +89,7 @@ export default function Login({ logo }) {
       </CheckArea>
 
       <Button
+        onPress={handleSubmit}
         style={{ margin: 22 }}
         title="Acessar"
         color={Principal}

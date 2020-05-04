@@ -5,10 +5,10 @@ import api from "~/Services/api";
 
 export function* signIn({ payload }) {
   try {
-    const { identifier, password } = payload;
+    const { email, password } = payload;
 
-    const response = yield call(api.post, "/auth/local", {
-      identifier,
+    const response = yield call(api.post, "/sessions", {
+      email,
       password,
     });
     const { jwt, user } = response.data;
@@ -24,7 +24,7 @@ export function* signUp({ payload }) {
   try {
     const { email, password, config } = payload;
 
-    const response = yield call(api.post, "auth/local/register", {
+    const response = yield call(api.post, "/users", {
       username: email,
       email,
       password,
