@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
+
+import "./src/Config/ReactotronConfig";
+
 import { Principal } from "./src/Config/Global";
+
+import { store, persistor } from "./src/Store";
 
 import Constants from "expo-constants";
 import * as Font from "expo-font";
@@ -35,9 +40,11 @@ export default function App() {
   }
 
   return (
-    <>
-      {Platform.OS === "ios" && <View style={styles.statusBar} />}
-      <Base />
-    </>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        {Platform.OS === "ios" && <View style={styles.statusBar} />}
+        <Base />
+      </PersistGate>
+    </Provider>
   );
 }
