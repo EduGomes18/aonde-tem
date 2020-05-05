@@ -156,41 +156,9 @@ export default function SearchResult() {
         <Recent>
           <RecTitle>Resultados da pesquisa</RecTitle>
           <HistList>
-            {/* <FlatList
-              showsHorizontalScrollIndicator={false}
-              data={data}
-              numColumns={2}
-              keyExtractor={(item) => item.id}
-              renderItem={({ item }) => {
-                return (
-                  <View
-                    style={{
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <HistoryCard
-                      onPress={() => {
-                        navigate("CompanyStore");
-                      }}
-                      style={styles.shadow}
-                    >
-                      <Image source={item.logo} />
-                    </HistoryCard>
-                    <DescArea>
-                      <Ionicons name="md-pin" size={12} color="#c4c4c4" />
-                      <DescribeText>{item.distance}</DescribeText>
-                    </DescArea>
-                    <BtnClosed color={Color(item.time)}>
-                      <BtnText>{Time(item.time)}</BtnText>
-                    </BtnClosed>
-                  </View>
-                );
-              }}
-            /> */}
             <FlatList
               showsHorizontalScrollIndicator={false}
-              data={store}
+              data={data}
               numColumns={2}
               keyExtractor={(item) => item.id}
               renderItem={({ item }) => {
