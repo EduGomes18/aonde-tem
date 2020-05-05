@@ -1,4 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { useNavigation } from "react-navigation-hooks";
+import { useDispatch, useSelector } from "react-redux";
+
+import { signUpRequest } from "~/Store/modules/login/actions";
+
 import { StyleSheet, Switch } from "react-native";
 import Pink from "~/Assets/Images/pink.svg";
 import Blue from "~/Assets/Images/blue.svg";
@@ -52,10 +57,29 @@ import {
   BussIner,
   End,
   Option,
+  ErrorMsg,
 } from "./styles";
 
 const Create = () => {
+  const { navigate } = useNavigation();
+  const dispatch = useDispatch();
+
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [confirm, setConfirm] = useState("");
+
+  const [error, setError] = useState("");
+
   const [active, setActive] = useState(false);
+
+  function handleSubmit() {
+    if (password === confirm) {
+      setError("");
+      dispatch(signUpRequest(email, password, active));
+    } else {
+      setError("Verifique sua senha!");
+    }
+  }
 
   function handleClient() {
     if (active === false) {
@@ -102,9 +126,31 @@ const Create = () => {
         </Theme>
       </AvtArea>
       <CreateArea>
-        <Input icon="person" placeholder="E-mail" />
-        <Input safe={true} icon="pass" placeholder="Senha" />
-        <Input safe={true} icon="pass" placeholder="Confirmar senha" />
+        <Input
+          keyboardType="email-address"
+          autoCorrect={false}
+          autoCapitalize="none"
+          icon="person"
+          placeholder="E-mail"
+          value={email}
+          onChangeText={setEmail}
+        />
+        <Input
+          value={password}
+          onChangeText={setPassword}
+          safe={true}
+          icon="pass"
+          placeholder="Senha"
+        />
+        <Input
+          value={confirm}
+          onChangeText={setConfirm}
+          safe={true}
+          icon="pass"
+          placeholder="Confirmar senha"
+        />
+
+        <ErrorMsg>{error}</ErrorMsg>
       </CreateArea>
       <Bussiness>
         <BussIner>
@@ -119,9 +165,7 @@ const Create = () => {
       </Bussiness>
       <End>
         <Button
-          onPress={() => {
-            console.log("check");
-          }}
+          onPress={handleSubmit}
           color="#F15F7E"
           textcolor="#fff"
           title="Acessar"

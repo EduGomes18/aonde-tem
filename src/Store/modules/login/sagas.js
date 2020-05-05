@@ -22,13 +22,13 @@ export function* signIn({ payload }) {
 
 export function* signUp({ payload }) {
   try {
-    const { email, password, config } = payload;
+    const { email, password, business } = payload;
 
     const response = yield call(api.post, "/users", {
-      username: email,
+      name: email,
       email,
       password,
-      config,
+      business,
     });
 
     const { jwt, user } = response.data;

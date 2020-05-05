@@ -125,3 +125,8 @@ export const Option = styled.Text`
   font-weight: bold;
   color: ${(props) => props.color};
 `;
+
+export const ErrorMsg = styled.Text`
+  font-size: 12px;
+  color: #d60000;
+`;

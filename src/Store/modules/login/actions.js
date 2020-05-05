@@ -6,18 +6,16 @@ export function signInRequest(email, password) {
 }
 
 export function signInSuccess(jwt, user) {
-  console.log(user);
-
   return {
     type: "@login/SIGN_IN_SUCCESS",
     payload: { jwt, user },
   };
 }
 
-export function signUpRequest(email, password, config) {
+export function signUpRequest(email, password, business) {
   return {
     type: "@login/SIGN_UP_REQUEST",
-    payload: { email, password, config },
+    payload: { email, password, business },
   };
 }
 export function signOut() {
