@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   DescribeArea,
   DescribeText,
@@ -13,6 +13,7 @@ import {
   PromoCard,
   FlatContainer,
 } from "./styles";
+
 import { useNavigation } from "react-navigation-hooks";
 import { Gray } from "~/Config/Global";
 import { Text, StyleSheet, FlatList } from "react-native";
@@ -20,6 +21,8 @@ import Input from "~/Components/Input";
 import Search from "~/Assets/Images/search.svg";
 import Seta from "~/Assets/Images/seta.svg";
 import Stroke from "~/Assets/Images/stroke.svg";
+
+import api from "~/Services/api";
 import { FontAwesome } from "@expo/vector-icons";
 
 import Dashboard from "~/Components/Dashboard";
@@ -28,6 +31,16 @@ import elevationShadowStyle from "~/Components/ShadowFunc";
 
 export default function ClientDash() {
   const [content, showContent] = useState(false);
+
+  const [load, setLoad] = useState(false);
+
+  // const getStores = async () => {
+  //   const response = await api.get("/business");
+  // };
+
+  // useEffect(() => {
+  //   getStores();
+  // }, []);
 
   function handleDrawer() {
     showContent(!content);

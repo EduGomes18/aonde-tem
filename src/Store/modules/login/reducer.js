@@ -1,7 +1,7 @@
 import produce from "immer";
 
 const INITIAL_STATE = {
-  jwt: null,
+  token: null,
   signed: false,
   business: null,
   loading: false,
@@ -11,7 +11,7 @@ export default function login(state = INITIAL_STATE, action) {
   return produce(state, (draft) => {
     switch (action.type) {
       case "@login/SIGN_IN_SUCCESS": {
-        draft.jwt = action.payload.jwt;
+        draft.token = action.payload.token;
         draft.signed = true;
         draft.business = action.payload.user.business;
         draft.loading = false;
@@ -30,7 +30,7 @@ export default function login(state = INITIAL_STATE, action) {
         break;
       }
       case "@login/SIGN_OUT": {
-        draft.jwt = null;
+        draft.token = null;
         draft.signed = null;
         break;
       }

@@ -11,9 +11,9 @@ export function* signIn({ payload }) {
       email,
       password,
     });
-    const { jwt, user } = response.data;
+    const { token, user } = response.data;
 
-    yield put(signInSuccess(jwt, user));
+    yield put(signInSuccess(token, user));
   } catch (err) {
     Alert.alert("Erro de autenticação", "Email ou senha incorreta");
     yield put(signFailure());
@@ -31,9 +31,9 @@ export function* signUp({ payload }) {
       business,
     });
 
-    const { jwt, user } = response.data;
+    const { token, user } = response.data;
 
-    yield put(signInSuccess(jwt, user));
+    yield put(signInSuccess(token, user));
   } catch (err) {
     Alert.alert("Falha no cadastro", "Verifique seus dados");
     yield put(signFailure());
@@ -43,10 +43,10 @@ export function* signUp({ payload }) {
 export function setToken({ payload }) {
   if (!payload) return;
 
-  const { jwt } = payload.login;
+  const { token } = payload.login;
 
-  if (jwt) {
-    api.defaults.headers.Authorization = `Bearer ${jwt}`;
+  if (token) {
+    api.defaults.headers.Authorization = `Bearer ${token}`;
   }
 }
 

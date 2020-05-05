@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Dashboard from "~/Components/Dashboard";
 import Input from "~/Components/Input";
 import { useNavigation } from "react-navigation-hooks";

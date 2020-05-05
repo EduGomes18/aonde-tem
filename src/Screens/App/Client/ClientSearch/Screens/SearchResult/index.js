@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Dashboard from "~/Components/Dashboard";
 import Input from "~/Components/Input";
 import { useNavigation } from "react-navigation-hooks";
 import { MaterialCommunityIcons, Ionicons, Entypo } from "@expo/vector-icons";
 import { View, StyleSheet, Image, FlatList } from "react-native";
 import elevationShadowStyle from "~/Components/ShadowFunc";
+
+import api from "~/Services/api";
+
 import {
   SearchBar,
   FilterIcon,
@@ -25,6 +28,24 @@ import {
 
 export default function SearchResult() {
   const { navigate } = useNavigation();
+
+  // const [load, setLoad] = useState(false);
+
+  // const [store, setStore] = useState([]);
+
+  // const getStores = async () => {
+  //   if (load) return;
+  //   setLoad(true);
+
+  //   const response = await api.get("/business");
+
+  //   setStore(response.data);
+  //   setLoad(false);
+  // };
+
+  // useEffect(() => {
+  //   getStores();
+  // }, []);
 
   const [active, setActive] = useState(false);
 
@@ -135,9 +156,41 @@ export default function SearchResult() {
         <Recent>
           <RecTitle>Resultados da pesquisa</RecTitle>
           <HistList>
-            <FlatList
+            {/* <FlatList
               showsHorizontalScrollIndicator={false}
               data={data}
+              numColumns={2}
+              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => {
+                return (
+                  <View
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <HistoryCard
+                      onPress={() => {
+                        navigate("CompanyStore");
+                      }}
+                      style={styles.shadow}
+                    >
+                      <Image source={item.logo} />
+                    </HistoryCard>
+                    <DescArea>
+                      <Ionicons name="md-pin" size={12} color="#c4c4c4" />
+                      <DescribeText>{item.distance}</DescribeText>
+                    </DescArea>
+                    <BtnClosed color={Color(item.time)}>
+                      <BtnText>{Time(item.time)}</BtnText>
+                    </BtnClosed>
+                  </View>
+                );
+              }}
+            /> */}
+            <FlatList
+              showsHorizontalScrollIndicator={false}
+              data={store}
               numColumns={2}
               keyExtractor={(item) => item.id}
               renderItem={({ item }) => {
